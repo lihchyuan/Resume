@@ -6,15 +6,15 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --accent-color: #3b82f6;
-    --text-color: #333;
-    --text-light: #666;
-    --bg-color: #fff;
-    --bg-light: #f8fafc;
-    --border-color: #e2e8f0;
-    --success-color: #10b981;
+    --primary-color: #1e3a8a; /* Dark blue */
+    --secondary-color: #0f172a; /* Darker blue */
+    --accent-color: #3b82f6; /* Lighter blue for accents */
+    --text-color: #e2e8f0; /* Light text for dark background */
+    --text-light: #94a3b8; /* Lighter text for secondary content */
+    --bg-color: #0f172a; /* Dark blue background */
+    --bg-light: #1e293b; /* Slightly lighter blue for alternating sections */
+    --border-color: #334155; /* Border color for dark theme */
+    --success-color: #10b981; /* Keep success color */
     --container-width: 1200px;
     --section-padding: 80px 0;
     --border-radius: 8px;
@@ -26,6 +26,9 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-light);
+    min-height: 100vh;
+    background-image: radial-gradient(var(--bg-color) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
 .container {
@@ -65,32 +68,38 @@ ul {
 }
 
 .primary-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: 2px solid var(--primary-color);
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .primary-btn:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
 }
 
 .secondary-btn {
     background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
 }
 
 .secondary-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.2);
 }
 
 /* Header Styles */
 header {
-    background-color: var(--bg-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: fixed;
     width: 100%;
     top: 0;
@@ -107,7 +116,9 @@ nav {
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    letter-spacing: 1px;
 }
 
 .nav-links {
@@ -116,13 +127,17 @@ nav {
 }
 
 .nav-links a {
-    color: var(--text-color);
+    color: var(--text-light);
     font-weight: 500;
     position: relative;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: var(--transition);
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
+    background-color: rgba(59, 130, 246, 0.1);
 }
 
 .nav-links a::after {
@@ -130,14 +145,16 @@ nav {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-color);
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
     transition: var(--transition);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
 
 .nav-links a:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
 .hamburger {
@@ -158,6 +175,7 @@ nav {
 .hero-section {
     padding: 160px 0 80px;
     background-color: var(--bg-color);
+    background-image: linear-gradient(to bottom right, var(--secondary-color), var(--primary-color));
 }
 
 .hero-section .container {
@@ -184,19 +202,26 @@ nav {
     font-weight: 700;
     margin-bottom: 10px;
     color: var(--text-color);
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    letter-spacing: 1px;
 }
 
 .hero-content h2 {
     font-size: 24px;
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--accent-color);
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .hero-content p {
     font-size: 18px;
     margin-bottom: 30px;
     color: var(--text-light);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
 }
 
 .hero-buttons {
@@ -229,6 +254,7 @@ nav {
 /* Section Styles */
 .section {
     padding: var(--section-padding);
+    background-color: var(--bg-light);
 }
 
 .section:nth-child(even) {
@@ -241,6 +267,7 @@ nav {
     margin-bottom: 50px;
     position: relative;
     color: var(--text-color);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
 .section-title::after {
@@ -248,10 +275,11 @@ nav {
     position: absolute;
     width: 80px;
     height: 3px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
 /* About Section */
@@ -272,10 +300,11 @@ nav {
 
 .about-details {
     flex: 1;
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color);
     padding: 30px;
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-left: 2px solid var(--accent-color);
 }
 
 .detail-item {
@@ -350,10 +379,11 @@ nav {
 
 .timeline-content {
     margin-left: 150px;
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color);
     padding: 25px;
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-left: 2px solid var(--accent-color);
 }
 
 .timeline-content h3 {
@@ -426,15 +456,17 @@ nav {
 
 .skill-bar {
     height: 10px;
-    background-color: var(--border-color);
+    background-color: var(--bg-light);
     border-radius: 5px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 .skill-level {
     height: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
 
 /* Projects Section */
@@ -445,12 +477,12 @@ nav {
 }
 
 .project-card {
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
-    border-top: 4px solid var(--primary-color);
+    border-top: 4px solid var(--accent-color);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -487,12 +519,13 @@ nav {
 }
 
 .project-tags span {
-    background-color: var(--bg-light);
-    color: var(--primary-color);
+    background-color: rgba(59, 130, 246, 0.2);
+    color: var(--accent-color);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
+    border: 1px solid var(--accent-color);
 }
 
 .project-links {
@@ -558,20 +591,28 @@ nav {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--bg-light);
-    color: var(--primary-color);
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-color);
     border-radius: 50%;
     transition: var(--transition);
+    border: 1px solid var(--accent-color);
 }
 
 .social-links a:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
 .contact-form {
     flex: 1;
     min-width: 300px;
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-left: 2px solid var(--accent-color);
 }
 
 .form-group {
@@ -593,6 +634,8 @@ nav {
     border-radius: var(--border-radius);
     font-size: 16px;
     transition: var(--transition);
+    background-color: var(--bg-light);
+    color: var(--text-color);
 }
 
 .form-group input:focus,
@@ -604,9 +647,10 @@ nav {
 
 /* Footer */
 footer {
-    background-color: var(--text-color);
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     padding: 40px 0;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
