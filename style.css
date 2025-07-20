@@ -446,29 +446,28 @@ nav {
     color: var(--text-color);
 }
 
-.skill-item {
-    margin-bottom: 20px;
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.skill-name {
+.skill-item span {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
     font-weight: 500;
-    margin-bottom: 8px;
-    color: var(--text-color);
-}
-
-.skill-bar {
-    height: 10px;
-    background-color: var(--bg-light);
-    border-radius: 5px;
-    overflow: hidden;
     border: 1px solid var(--border-color);
+    transition: var(--transition);
 }
 
-.skill-level {
-    height: 100%;
+.skill-item span:hover {
     background-color: var(--accent-color);
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    color: var(--bg-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* Projects Section */
